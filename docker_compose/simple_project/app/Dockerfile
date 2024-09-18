@@ -26,4 +26,4 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-ENTRYPOINT ["uwsgi", "--strict", "--ini", "uwsgi.ini"]
+ENTRYPOINT ["./wait-for-it.sh", "theatre-db:5432", "--", "uwsgi", "--strict", "--ini", "uwsgi.ini"]
